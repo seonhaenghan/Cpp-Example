@@ -1,2 +1,2 @@
-﻿  MemMalFree.cpp
-C:\1_PROJECT\Project_CPP\new_delete_10\new_delete_10\MemMalFree.cpp(15,2): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  Example_02_3.cpp
+  new_delete_10.vcxproj -> C:\1_PROJECT\Project_CPP\new_delete_10\x64\Debug\new_delete_10.exe

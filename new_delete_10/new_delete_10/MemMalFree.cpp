@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <string.h>
 #include <stdlib.h>
@@ -12,7 +14,7 @@ char* MakeStrAdr(int len)
 int main(void)
 {
 	char* str = MakeStrAdr(20);
-	strcpy_s(str, "I am so happy~");
+	strcpy(str, "I am so happy~");
 	cout << str << endl;
 	free(str);
 	return 0; 
