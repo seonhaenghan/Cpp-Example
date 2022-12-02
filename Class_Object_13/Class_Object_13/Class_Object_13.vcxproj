@@ -130,11 +130,16 @@
     <None Include="README.MD" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Car.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Example_03_2.cpp" />
     <ClCompile Include="RacingCarClassBase.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="RacingMain.cpp" />
+    <ClCompile Include="RacingMain.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Car.h" />
