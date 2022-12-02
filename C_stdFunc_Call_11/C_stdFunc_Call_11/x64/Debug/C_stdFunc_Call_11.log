@@ -1,2 +1,3 @@
-﻿  StdCPPFunc.cpp
+﻿  Example_02_4.cpp
+C:\1_PROJECT\Project_CPP\C_stdFunc_Call_11\C_stdFunc_Call_11\Example_02_4.cpp(66,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   C_stdFunc_Call_11.vcxproj -> C:\1_PROJECT\Project_CPP\C_stdFunc_Call_11\x64\Debug\C_stdFunc_Call_11.exe
