@@ -121,7 +121,31 @@ using namespace std;
 class Printer
 {
 private:
+	char str[30];
 public:
+	void SetString(const char* string);
+	void ShowString(void);
 };
+
+void Printer::SetString(const char* string)
+{
+	strcpy(str, string);
+}
+
+ void Printer::ShowString(void)
+{
+	 cout << str << endl;
+}
+
+int main(void)
+{
+	Printer pnt;
+	pnt.SetString("Hello world!");
+	pnt.ShowString();
+
+	pnt.SetString("I love C++");
+	pnt.ShowString();
+	return 0;
+}
 
 #endif
