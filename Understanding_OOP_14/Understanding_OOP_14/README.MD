@@ -127,3 +127,112 @@
 - 위 클래스에 선언된 두 변수는 private나 public 어디에도 포함이 안된다.
 - 그러나 클래스는 아무런 선언이 존재하지 않을 때 private로 간주한다.
 
+## 5. 클래스 기반의 두 가지 객체생성 방법
+- 객체를 생성하지 않고, 이 두 클래스 안에 존재하는 변수에 접근하고 호출하는 것은 불가능하다.
+- 이는 자동차의 엔진과 자동차의 외형을 생산할 수 있는 틀이 있다 해서, 이들을 타고 달릴 서 없는 것과 같은 이치임.
+- 다음은 C++에서 정의하고 있는 두 가지 객체생성 방법이다. 이는 기본 자료형 변수의 선언방ㅅ;ㄱ과 동일함을 보이는 것이다.
+
+```sh
+    ClassName objName;                      // 일반적인 변수의 선언방식
+    ClassName * ptrObj = new ClassName;     // 동적 할당방식(힙 할당방식)
+```
+
+- 우리가 정의한 FuritSeller 클래스와 FuritBuyer 클래스의 객체 생성방식은 다음과 같음
+
+```sh
+    FuritSeller seller;
+    FuritBuyer buyer;
+```
+
+## 6. 사과장수 시뮬레이션 완료
+- 아래 예제는 특히 의미를 갖는 이유는 두 객체가 서로 대화를 하기 때문
+- 객체는 어떻게 대화를 주고 받는지 예제를 통해 확인할 수 있음
+
+```sh
+    #include <iostream>
+    using namespace std;
+
+    class FuritSeller
+    {
+    private:
+        int APPLE_PRICE;
+        int numOfApples;
+        int myMoney;
+    public:
+        void InitMebers(int price, int num, int money)
+        {
+            APPLE_PRICE = price;
+            numOfApples = num;
+            myMoney = money;
+        }
+
+        int SaleApples(int money)
+        {
+            int num = money / APPLE_PRICE;
+            numOfApples -= num;
+            myMoney += money;
+            return num;
+        }
+
+        void ShowSalesResult()
+        {
+            cout << "남은 사과: " << numOfApples << endl;
+            cout << "판매 수익: " << myMoney << endl << endl;
+        }
+    };
+
+    class FuritBuyer
+    {
+        int myMoney;
+        int numOfApples;
+    public:
+        void InitMembers(int money)
+        {
+            myMoney = money;
+            numOfApples = 0;
+        }
+        void BuyApples(FuritSeller& seller, int money)
+        {
+            numOfApples += seller.SaleApples(money);
+            myMoney -= money;
+        }
+        
+        void ShowBuyResult()
+        {
+            cout << "현재 잔액: " << myMoney << endl;
+            cout << "사과 개수: " << numOfApples << endl << endl; 
+        }
+    };
+
+    int main(void)
+    {
+        FuritSeller seller;
+        seller.InitMebers(1000, 20, 0);
+        FuritBuyer buyer;
+        buyer.InitMembers(5000);
+        buyer.BuyApples(seller, 2000);		// 과일 구매
+                                            // BuyApples은 사과의 구매기능을 담당함
+                                            // 이 함수 내에서 사과의 구매가 완성되어야함
+                                            // FuritBuyer 클래스 안에 존재하지 않지만 필요한 구매다상, 구매금액이 있다.
+                                            // 그래서 이 둘의 정보가 인자로 전달되도록 함수가 정의되었다.
+        cout << "과일 판매자의 현황" << endl;
+        seller.ShowSalesResult();
+        cout << "과일 구매자의 현황" << endl;
+        buyer.ShowBuyResult();
+
+        return 0;
+    }
+```
+
+## 7. 객체간 대화 방법 (Message Passsing 방법)
+- 위 예제에서 FuritBuyer 객체에 존재하는 함수 내에서 FuritSeller 객체의 함수 SaleApples를 호출하고 있음
+- 이 한 문장을 현실에 반영했을 때 아래와 같음
+
+<seller님 사과 2000원 어치 구매하겠습니다.>
+
+- '나'라는 객체가 과일장수라는 객체로부터 과일 객체를 구매하는 행위도 그래도 표현 가능
+- 이처럼 하나의 객체가 다른 하나의 객체에게 메시지를 전달하는 방법은 (어떠한 행위의 요구를 위한 메시지 전달) 
+- 함수호출을 기반으로 한다. 그래서 OOP에서는 이러한 형채의 함수호출을 가리켜 
+- 메시지 전달(Message Passing)이라 한다.
+
+
