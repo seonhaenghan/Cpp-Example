@@ -32,6 +32,9 @@
     <ClCompile Include="RectangleFaultFind.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Example_04_1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point.h">
