@@ -1,2 +1,5 @@
-﻿  PrivateConstructor.cpp
+﻿  Eample_04_3.cpp
+C:\1_PROJECT\Project_CPP\Constructor_Destructor_17\Constructor_Destructor_17\Eample_04_3.cpp(115,1): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\1_PROJECT\Project_CPP\Constructor_Destructor_17\Constructor_Destructor_17\Eample_04_3.cpp(119,1): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\1_PROJECT\Project_CPP\Constructor_Destructor_17\Constructor_Destructor_17\Eample_04_3.cpp(123,1): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Constructor_Destructor_17.vcxproj -> C:\1_PROJECT\Project_CPP\Constructor_Destructor_17\x64\Debug\Constructor_Destructor_17.exe

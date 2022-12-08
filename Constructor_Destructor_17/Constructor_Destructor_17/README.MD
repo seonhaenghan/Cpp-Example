@@ -771,3 +771,84 @@ int main(void)
     > 매개변수는 void 형으로 선언되어야 하기 때문에 오버로딩도, 디폴트 값 설정도 불가능
 ```
 
+- 예를 들어 AAA라는 클래스가 정의되어 있다면, 다음의 형태를 갖춘 것이 소멸자임
+
+```sh
+    ~AAA() {. . . . .}
+```
+
+- 이 소멸자는 객체소멸 과정에서 자동으로 호출됨
+- 그리고 프로그래머가 직접 소멸자를 정의하지 않으면.
+- 생성자와 동일하게 디폴트 소멸자가 자동으로 삽입된다.
+- 즉 아래 두 클래스 정의는 동일한 것을 알 수 있음
+
+```sh
+    class AAA
+    {
+        // empty
+    };
+
+    class AAA
+    {
+        public:
+            AAA() {}
+            ~AAA() {}
+    };
+```
+
+- 이러한 소멸자는 대개 생성자에서 할당한 리소스의 소멸에 사용
+- 예를 들어 생성자 내에 new 연산자를 이용해 할당한 메모리 공간이 있다면.
+- 소명자에서 delete 연산자를 사용해 이 메모리 공간을 소멸시킴
+
+
+--> 예제
+
+```sh
+    #define _CRT_SECURE_NO_WARNINGS
+
+    #include <iostream>
+    #include <cstring>
+    using namespace std;
+
+    class Person
+    {
+    private:
+        char* name;
+        int age;
+    public:
+        Person(const char* myname, int myage)
+        {
+            int len = strlen(myname) + 1;
+            name = new char[len];				// 불필요한 메모리 공간의 낭비 또는 부족을 막기 위해 문자열의 길이만큼
+            strcpy(name, myname);				// 메모리 공간을 동적할당 함 
+            age = myage;
+        }
+
+        void ShowPersonInfo() const
+        {
+            cout << "이름: " << name << endl;
+            cout << "나이: " << age << endl;
+        }
+
+        ~Person()
+        {
+            delete[]name;
+            cout << "called destructor!" << endl;
+        }
+    };
+
+    int main(void)
+    {
+        Person man1("Lee dong woo", 29);
+        Person man2("Jang dong gun", 41);
+        man1.ShowPersonInfo();
+        man2.ShowPersonInfo();
+        return 0;
+    }
+```
+
+--> 실행 결과
+
+![image](https://user-images.githubusercontent.com/109562373/206502307-f47b2920-202a-4e2d-8e97-dda7bd2addec.png)
+
+
